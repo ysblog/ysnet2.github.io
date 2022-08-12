@@ -1955,6 +1955,7 @@ grape</p>
     <title>而你懂你阜宁</title>
     <url>/2023/12/24/index/</url>
     <content><![CDATA[<iframe src="//hc.baozi66.top:99/xjj.php?type=mp4&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"video":{"url":"http://hc.baozi66.top:99/xjj.php?type=mp4","pic":"http://home.ustc.edu.cn/~mmmwhy/GEM.jpg"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
   </entry>
 </search>
