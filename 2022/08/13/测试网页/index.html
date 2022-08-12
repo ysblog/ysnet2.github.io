@@ -1,0 +1,54 @@
+
+xxxxxxxxxxxxx
+<?php
+	//调用接口
+$api=file_get_contents("http://api.xiao-xin.top/API/kuaishou.php?type=json");//接口可替换，自行采集
+// $url="https://www.52mhe.com/vip/video.php";//接口可替换，自行采集
+
+// $headers = get_headers($url, 1);
+
+//         $api=$headers['Location'];
+
+$file = (array_count_values(file('xjj.zy')));
+//缓存数据
+$qt=0;
+    $new_array=array_values(array_unique($file));//去重
+$content=preg_replace('/($s*$)|(^s*^)/m','',$new_array); //消除空行
+for ($i = 0; $i <= count($content); $i++) {
+     if ($api==$content[$i]) {
+         $qt=1;
+         continue;
+     }
+}
+if ($qt==0) {
+    file_put_contents("xjj.zy",$api."\n",FILE_APPEND);
+}
+//获取随机一行
+$file=file("xjj.ip");
+$arr=mt_rand(0,count($file)-1);
+$content=trim($file[$arr]);
+if ($arr>count($file)) {//判断随机数大于总行则输出接口数据
+    $data = json_decode($api,true);
+    header("location:".$api['video_url']);
+}else {
+    if ($_REQUEST['type']=="mp4") {
+    $data = json_decode($content,true);
+    header("location:".$data['video_url']);
+    exit();
+}elseif ($_REQUEST['type']=="delete") {
+    //以下代码为去重
+$new_array=array_values(array_unique($file));//去重
+$content=preg_replace('/($s*$)|(^s*^)/m','',$new_array); //消除空行
+for ($i = 0; $i <= count($content); $i++) {
+     file_put_contents("xjj.zy",$content[$i],FILE_APPEND);
+}
+echo("已经去重，目前".count($content)."行");
+}
+else {
+    //转码输出
+echo json_encode(json_decode($content), JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+}
+}
+
+?>
+xxxxxxxxxxxxx
